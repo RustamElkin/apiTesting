@@ -10,7 +10,7 @@ public class JsonPlaceHolderTest extends TestConfig { // этот класс т�
 
     @Test
     public void getTest() {
-        given().queryParam("postId", 1).
+        given().queryParams("postId", 1).
                 log().uri().
         when().
                 get( JSON_PLACEHOLDER_GET). // здесь добавляем передачу параметра с помощью вызова queryParam
