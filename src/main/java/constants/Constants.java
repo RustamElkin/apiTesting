@@ -8,7 +8,7 @@ import  static  constants.Constants.Servers.JMART_URL;
 public class Constants {
 
     public static class RunVariable {
-        public static String server = Servers.REQUESTBIN_URL;
+        public static String server = Servers.JSON_PLACEHOLDER_URL;
         public static String path = ""; // Если ничего не передаем в качестве Path, оставляем пустой
 //        public static String path = JMART_PATH;
 //        public static String path = SWAPI_PATH;

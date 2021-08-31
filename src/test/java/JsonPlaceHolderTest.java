@@ -60,7 +60,7 @@ public class JsonPlaceHolderTest extends TestConfig { // этот класс т�
                 "\"id\":1,\n" +
                 "\"title\":\"foo\",\n" +
                 "\"body\":\"bar\",\n" +
-                "\"userId\":1,\n" +
+                "\"userId\":1\n" +
                 "}";
         given().
                 body(putBodyJson).log().uri().
@@ -79,7 +79,7 @@ public class JsonPlaceHolderTest extends TestConfig { // этот класс т�
     @Test
     public void DELETE() {
 
-        given().log().uri(). // Тело запроса не указываем.
+        given().log().all(). // Тело запроса не указываем.
 
         when().              // Создадим эндпоинт в Constants - public static String JSON_PLACEHOLDER_DELETE = "posts/1/";
                 delete(JSON_PLACEHOLDER_DELETE).
@@ -99,13 +99,14 @@ public class JsonPlaceHolderTest extends TestConfig { // этот класс т�
         String postJsonBody = "{\n" +
                 "\"title\":\"foo\",\n" +
                 "\"body\":\"bar\",\n" +
-                "\"userId\":1,\n" +
+                "\"userId\":1\n" +
                 "}";
         given().
-                body(postJsonBody).log().uri().
-                when().
+                body(postJsonBody).
+                log().all().
+        when().
                 post(JSON_PLACEHOLDER_POST).
-                then().
+        then().
                 log().body().statusCode(201); //201 только у POST.
 
     }
@@ -134,8 +135,11 @@ public class JsonPlaceHolderTest extends TestConfig { // этот класс т�
                 "      </Address>\n" +
                 "  </Employee>\n" +
                 "</Company>";
+
         given().
-                body(postXMLBody).log().uri().
+                spec(requestSpecXML).
+                body(postXMLBody).
+                log().all().
         when().
                 post(""). // Из конфига URL, ничего передавать не будем
         then().
@@ -146,6 +150,9 @@ public class JsonPlaceHolderTest extends TestConfig { // этот класс т�
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Знакомство с RequestSpecification
-
+    // Возможность унифицировать все запросы где в одном месте вынесем общие свойства запроса.
+    // Использует шаблон builder, requestSpecBuilder позволяет создавать новые объекты используя не ограниченное количество их свойств (Headers, Cookies, URL), Для того чтоб создать уникальные запросы.
+    // В TestConfig создадим RequestSpecification requestSpec = new RequestSpecBuilder()...
+    // RequestSpecification может использоваться как для одного запроса точечно, так и для всех запросов.
 
 }
