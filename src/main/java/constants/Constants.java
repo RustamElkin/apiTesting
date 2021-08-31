@@ -8,7 +8,7 @@ import  static  constants.Constants.Servers.JMART_URL;
 public class Constants {
 
     public static class RunVariable {
-        public static String server = Servers.JSON_PLACEHOLDER_URL;
+        public static String server = Servers.REQUESTBIN_URL;
         public static String path = ""; // Если ничего не передаем в качестве Path, оставляем пустой
 //        public static String path = JMART_PATH;
 //        public static String path = SWAPI_PATH;
@@ -19,12 +19,14 @@ public class Constants {
         public static String JMART_URL = "https://jtest4.jmart.kz/";
         public static String GOOGLE_PLACES_URL;
         public static String JSON_PLACEHOLDER_URL= "https://jsonplaceholder.typicode.com/";
+        public static String REQUESTBIN_URL= "https://eno3lknlvvzmidx.m.pipedream.net";
+
     }
 
     public static class Path {
         public static String JMART_PATH = "api/4.0/";
         public static String SWAPI_PATH = "api/";
-        public static String GOOGLE_PLACES_PATH;
+        public static String GOOGLE_PLACES_PATH = "maps/api/place/";
     }
 
     // в Actions добавим константы запросов
@@ -37,10 +39,14 @@ public class Constants {
         public static String SWAPI_GET_PEOPLE = "people/";
 
         // GOOGLE_PLACES
-        public static String GOOGLE_PLACES_PATH;
+        public static String GOOGLE_PLACES_SEARCH = "findplacefromtext/xml";
 
         // JSON_PLACEHOLDER
         public static String JSON_PLACEHOLDER_GET = "comments/";
         public static String JSON_PLACEHOLDER_PUT = "posts/1/";
+        public static String JSON_PLACEHOLDER_DELETE = "posts/1/"; // Создаем отдельный эндпоинт, чтоб если изменится эндпоинт для PUT, не сломался тест DELETE
+        public static String JSON_PLACEHOLDER_POST = "posts/";
+
+
     }
 }
