@@ -47,6 +47,5 @@ public class Constants {
         public static String JSON_PLACEHOLDER_DELETE = "posts/1/"; // Создаем отдельный эндпоинт, чтоб если изменится эндпоинт для PUT, не сломался тест DELETE
         public static String JSON_PLACEHOLDER_POST = "posts/";
 
-
     }
 }

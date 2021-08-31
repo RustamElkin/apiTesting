@@ -32,7 +32,6 @@ public class TestConfig {
         RequestSpecification requestSpecJson = new RequestSpecBuilder().
                 addHeader("Content-Type", "application/json").
                 addCookie("testCookieJson").
-//                setBaseUri(JSON_PLACEHOLDER_URL).
                 build();
         RestAssured.requestSpecification = requestSpecJson;
 
