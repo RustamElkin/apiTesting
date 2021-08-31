@@ -9,8 +9,9 @@ public class Constants {
 
     public static class RunVariable {
         public static String server = Servers.JSON_PLACEHOLDER_URL;
+        public static String path = ""; // Если ничего не передаем в качестве Path, оставляем пустой
 //        public static String path = JMART_PATH;
-        public static String path = "";
+//        public static String path = SWAPI_PATH;
     }
 
     // в Servers добавим константы для наших доменов, чтобы можно было тестировать разные проекты
@@ -22,18 +23,24 @@ public class Constants {
 
     public static class Path {
         public static String JMART_PATH = "api/4.0/";
+        public static String SWAPI_PATH = "api/";
         public static String GOOGLE_PLACES_PATH;
     }
 
     // в Actions добавим константы запросов
     public static class Actions {
+
         // JMART
         public static String JMART_GET_SRA_FASTED_PRODUCTS_GET = "sra_faseted_products?category_id=";
 
-        //GOOGLE_PLACES
+        // SWAPI
+        public static String SWAPI_GET_PEOPLE = "people/";
+
+        // GOOGLE_PLACES
         public static String GOOGLE_PLACES_PATH;
 
-        //JSON_PLACEHOLDER
+        // JSON_PLACEHOLDER
         public static String JSON_PLACEHOLDER_GET = "comments/";
+        public static String JSON_PLACEHOLDER_PUT = "posts/1/";
     }
 }
