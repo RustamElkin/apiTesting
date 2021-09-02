@@ -17,6 +17,7 @@ public class Constants {
     // в Servers добавим константы для наших доменов, чтобы можно было тестировать разные проекты
     public static class Servers {
         public static String JMART_URL = "https://jtest4.jmart.kz/";
+        public static String SWAPI_URL = "https://jtest4.jmart.kz/";
         public static String GOOGLE_PLACES_URL;
         public static String JSON_PLACEHOLDER_URL= "https://jsonplaceholder.typicode.com/";
         public static String REQUESTBIN_URL= "https://eno3lknlvvzmidx.m.pipedream.net";
@@ -43,6 +44,7 @@ public class Constants {
 
         // JSON_PLACEHOLDER
         public static String JSON_PLACEHOLDER_GET = "comments/";
+        public static String JSON_PLACEHOLDER_GET2 = "posts/1";
         public static String JSON_PLACEHOLDER_PUT = "posts/1/";
         public static String JSON_PLACEHOLDER_DELETE = "posts/1/"; // Создаем отдельный эндпоинт, чтоб если изменится эндпоинт для PUT, не сломался тест DELETE
         public static String JSON_PLACEHOLDER_POST = "posts/";

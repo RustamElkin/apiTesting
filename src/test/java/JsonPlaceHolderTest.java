@@ -107,7 +107,9 @@ public class JsonPlaceHolderTest extends TestConfig { // этот класс т�
         when().
                 post(JSON_PLACEHOLDER_POST).
         then().
-                log().body().statusCode(201); //201 только у POST.
+                spec(responseSpecificationForPost). // Если statusCode(201) выносим в спецификации, то после body(). не пишем проверку на .statusCode(201);
+//                log().body().statusCode(201); //201 только у POST.
+                 log().body();
 
     }
 
@@ -143,7 +145,9 @@ public class JsonPlaceHolderTest extends TestConfig { // этот класс т�
         when().
                 post(""). // Из конфига URL, ничего передавать не будем
         then().
-                log().body().statusCode(200); //201 только у POST, но мы обращаемся через транслирующий сервис и объект по факту не создается. Ставим 200
+                spec(responseSpecificationForGet).
+//                log().body().statusCode(200); // 201 только у POST, но мы обращаемся через транслирующий сервис и объект по факту не создается. Ставим 200
+                log().body();
 
     }
 

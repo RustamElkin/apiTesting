@@ -1,8 +1,9 @@
 import config.TestConfig;
 import org.testng.annotations.Test;
 
-import static constants.Constants.Actions.JMART_GET_SRA_FASTED_PRODUCTS_GET;
+import static constants.Constants.Actions.*;
 import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.equalTo;
 
 public class FirstTest extends TestConfig {
 
@@ -30,6 +31,43 @@ public class FirstTest extends TestConfig {
         // чтобы можно было передавать параметр строкой запроса и отправлять на сервер
         // пример в JsonPlaceHolderTest
 
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Assertions для ответов с Java библиотекой Hamcrest
+
+    @Test
+    public void getSomeFieldInResponseAssertion() {
+        given().
+                spec(requestSpecificationForPlaceholderTests).log().uri().
+        when().
+                get( JSON_PLACEHOLDER_GET2).
+        then().
+                body("title", equalTo("sunt aut facere repellat provident occaecati excepturi optio reprehenderit")).
+                log().body();
+        // С одним объектом понятно.
+        // А если массив объектов приходит как тогда?
+    }
+
+    @Test
+    public void getSomeFieldInResponseAssertion2() {
+        // Если приходит массив в котором много объектов и есть вложенности
+        given().
+                spec(requestSpecificationForPlaceholderTests).log().uri().
+        when().
+                get( JSON_PLACEHOLDER_GET).
+        then().
+                body("name[0]", equalTo("id labore ex et quam laborum")).
+                // тут я проверяю поле "name" которое лежит в массиве
+                        // Если бы у поля был свой массив, то сперва пишется название поля, потом точка, нужное поле и в квадратных скобках номер объекта. Начинается с нуля.
+                                // {
+                                //      "results": [
+                                //      {"name": "id labore ex et quam laborum"}
+                                //      ]
+                                // }
+                                // body(results.name[0], equalTo("id labore ex et quam laborum")).
+                log().body();
     }
 
 }
