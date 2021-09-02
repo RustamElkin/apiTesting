@@ -1,5 +1,6 @@
 package constants;
 import static constants.Constants.Path.JMART_PATH;
+import static constants.Constants.Path.SWAPI_PATH;
 import  static  constants.Constants.Servers.JMART_URL;
 
 // Неизменяемые переменные
@@ -8,7 +9,8 @@ import  static  constants.Constants.Servers.JMART_URL;
 public class Constants {
 
     public static class RunVariable {
-        public static String server = Servers.JSON_PLACEHOLDER_URL;
+//        public static String server = Servers.JMART_URL;
+        public static String server = Servers.SWAPI_URL;
         public static String path = ""; // Если ничего не передаем в качестве Path, оставляем пустой
 //        public static String path = JMART_PATH;
 //        public static String path = SWAPI_PATH;
@@ -16,8 +18,8 @@ public class Constants {
 
     // в Servers добавим константы для наших доменов, чтобы можно было тестировать разные проекты
     public static class Servers {
-        public static String JMART_URL = "https://jtest4.jmart.kz/";
-        public static String SWAPI_URL = "https://jtest4.jmart.kz/";
+        public static String JMART_URL = "https://jtest3.jmart.kz/";
+        public static String SWAPI_URL = "https://swapi.dev/";
         public static String GOOGLE_PLACES_URL;
         public static String JSON_PLACEHOLDER_URL= "https://jsonplaceholder.typicode.com/";
         public static String REQUESTBIN_URL= "https://eno3lknlvvzmidx.m.pipedream.net";

@@ -33,6 +33,15 @@ public class TestConfig {
             expectStatusCode(201).
             build();
 
+    protected RequestSpecification requestSpecificationForDataExtractTests = new RequestSpecBuilder().
+            setBaseUri(JMART_URL).
+            build();
+
+    protected RequestSpecification requestSpecificationForCookieExtractTests = new RequestSpecBuilder().
+            setBaseUri(SWAPI_URL).
+            addCookie("testCookieJson").
+            build();
+
     protected RequestSpecification requestSpecificationForPlaceholderTests = new RequestSpecBuilder().
             setBaseUri(JSON_PLACEHOLDER_URL).
             build();
@@ -45,18 +54,18 @@ public class TestConfig {
         RestAssured.baseURI = server;
         RestAssured.basePath = path;
 
-        // ДО
-//        RequestSpecification requestSpecJson = new RequestSpecBuilder().
-//                addHeader("Content-Type", "application/json").
-//                addCookie("testCookieJson").
-//                build();
-//        RestAssured.requestSpecification = requestSpecJson;
-
-        // ПОСЛЕ
-        RestAssured.requestSpecification = new RequestSpecBuilder().
+         // ДО
+        RequestSpecification requestSpecJson = new RequestSpecBuilder().
                 addHeader("Content-Type", "application/json").
                 addCookie("testCookieJson").
                 build();
+        RestAssured.requestSpecification = requestSpecJson;
+
+//        // ПОСЛЕ
+//        RestAssured.requestSpecification = new RequestSpecBuilder().
+//                addHeader("Content-Type", "application/json").
+//                addCookie("testCookieJson").
+//                build();
 
         // тут если у всех дублируется параметры и будет применяться для каждого нашего теста
 
