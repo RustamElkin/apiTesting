@@ -1,14 +1,20 @@
 import config.TestConfig;
+import connectionMySQLdb.ConnectionMySQLdb;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
+import java.sql.SQLException;
+
 import static constants.Constants.Actions.*;
-import static constants.Constants.Path.JMART_PATH;
+import static constants.Constants.Path.JMART_AUTHSIGHNIN_PATH;
 import static constants.Constants.Servers.JMART_URL;
 import static io.restassured.RestAssured.given;
 
-public class AzatTest extends TestConfig  {
+public class AuthTest extends TestConfig  {
+
+    private ConnectionMySQLdb connectionMySQLdb;
+
 
     @Test
     public void PostAuthSignIn () {
@@ -17,18 +23,15 @@ public class AzatTest extends TestConfig  {
                 "    \"login\": \"dev_test_admin@email.com\",\n" +
                 "    \"password\": \"Test_4dmin_Jmart\"\n" +
                 "}";
-        Response response =
         given().
                 body(postJsonBody).
                 log().body().
         when().
-                post(JMART_URL + JMART_PATH + JMART_AUTHSIGHNIN_POST ).
+                post(JMART_URL + JMART_AUTHSIGHNIN_PATH + JMART_AUTHSIGHNIN_POST ).
         then().
                 spec(responseSpecificationForPost).
-                log().body().extract().response();
+                log().body();
 
-        String jsonResponseAsString = response.asString();
-        System.out.println(jsonResponseAsString);
     }
 
     @Test
@@ -37,19 +40,23 @@ public class AzatTest extends TestConfig  {
         String postJsonBody = "{\n" +
                 "    \"mobile_phone\": \"+7(777)055-13-64\"\n" +
                 "}";
-        Response response =
                 given().
                         body(postJsonBody).
                         log().body().
                 when().
-                        post(JMART_URL + JMART_PATH + JMART_AUTHSIGHNIN_BY_OTP_POST ).
+                        post(JMART_URL + JMART_AUTHSIGHNIN_PATH + JMART_AUTHSIGHNIN_BY_OTP_POST ).
                 then().
                         spec(responseSpecificationForPost).
-                        log().body().
-                        extract().response();
+                        log().body();
 
-        String jsonResponseAsString = response.asString();
-        System.out.println(jsonResponseAsString);
+    }
+
+    public void SMSCode() throws SQLException, InterruptedException {
+        connectionMySQLdb = new ConnectionMySQLdb();
+
+        ConnectionMySQLdb.SelectSQL();
+        ConnectionMySQLdb.getSmsCode();
+        Thread.sleep(2000);
     }
 
     @Test
@@ -57,22 +64,19 @@ public class AzatTest extends TestConfig  {
 
         String postJsonBody = "{\n" +
                 "    \"mobile_phone\": \"+7(777)055-13-64\",\n" +
-                "    \"otp\": \"1950\"\n" +
+                "    \"otp\": \"smsCode: \"\n" +
                 "}";
 
-        Response response =
+
                 given().
                         body(postJsonBody).
                         log().body().
                 when().
-                        post(JMART_URL + JMART_PATH + JMART_AUTHSIGHNIN_BY_OTP_VERIFY_POST ).
+                        post(JMART_URL + JMART_AUTHSIGHNIN_PATH + JMART_AUTHSIGHNIN_BY_OTP_VERIFY_POST ).
                 then().
                         spec(responseSpecificationForPost).
-                        log().body().
-                        extract().response();
+                        log().body();
 
-        String jsonResponseAsString = response.asString();
-        System.out.println(jsonResponseAsString);
     }
 
 

@@ -1,10 +1,11 @@
 package constants;
-import static constants.Constants.Path.JMART_PATH;
+
 import static constants.Constants.Path.SWAPI_PATH;
 import  static  constants.Constants.Servers.JMART_URL;
 
 // Неизменяемые переменные
 // сюда добавляются URL, PATH и эндпоинты для наших запросов (Actions - константы запросов)
+// http://json.parser.online.fr/beta/ онлайн Json парсер
 
 public class Constants {
 
@@ -12,7 +13,7 @@ public class Constants {
         public static String server = Servers.JMART_URL;
 //        public static String server = Servers.SWAPI_URL;
 //        public static String path = ""; // Если ничего не передаем в качестве Path, оставляем пустой
-        public static String path = JMART_PATH;
+        public static String path = Path.JMART_AUTHSIGHNIN_PATH;
 //        public static String path = SWAPI_PATH;
     }
 
@@ -28,8 +29,8 @@ public class Constants {
     }
 
     public static class Path {
-//        public static String JMART_PATH = "api/4.0/";
-        public static String JMART_PATH = "/gw/user/v1/";
+        public static String JMART_PATH = "api/4.0/";
+        public static String JMART_AUTHSIGHNIN_PATH = "/gw/user/v1/";
         public static String SWAPI_PATH = "api/";
         public static String GOOGLE_PLACES_PATH = "maps/api/place/";
     }
@@ -56,6 +57,8 @@ public class Constants {
         public static String JSON_PLACEHOLDER_DELETE = "posts/1/"; // Создаем отдельный эндпоинт, чтоб если изменится эндпоинт для PUT, не сломался тест DELETE
         public static String JSON_PLACEHOLDER_POST = "posts/";
 
-
     }
+
+
+
 }
