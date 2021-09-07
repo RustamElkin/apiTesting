@@ -26,9 +26,9 @@ public class AuthTest extends TestConfig {
         given().
                 body(postJsonBody).
                 log().body().
-                when().
+        when().
                 post(JMART_URL + JMART_AUTHSIGHNIN_PATH + JMART_AUTHSIGHNIN_POST).
-                then().
+        then().
                 spec(responseSpecificationForPost).
                 log().body();
 
@@ -43,9 +43,9 @@ public class AuthTest extends TestConfig {
         given().
                 body(postJsonBody).
                 log().body().
-                when().
+        when().
                 post(JMART_URL + JMART_AUTHSIGHNIN_PATH + JMART_AUTHSIGHNIN_BY_OTP_POST).
-                then().
+        then().
                 spec(responseSpecificationForPost).
                 log().body();
 
@@ -71,9 +71,9 @@ public class AuthTest extends TestConfig {
         given().
                 body(postJsonBody).
                 log().body().
-                when().
+        when().
                 post(JMART_URL + JMART_AUTHSIGHNIN_PATH + JMART_AUTHSIGHNIN_BY_OTP_VERIFY_POST).
-                then().
+        then().
                 spec(responseSpecificationForPost).
                 log().body();
 
