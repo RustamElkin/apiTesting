@@ -121,8 +121,6 @@ import com.mysql.cj.protocol.a.TracingPacketReader;
 import com.mysql.cj.protocol.a.TracingPacketSender;
 import com.mysql.cj.util.TimeUtil;
 import com.mysql.cj.util.Util;
-import com.mysql.jdbc.Driver;
-
 import testsuite.BaseQueryInterceptor;
 import testsuite.BaseTestCase;
 import testsuite.BufferingLogger;

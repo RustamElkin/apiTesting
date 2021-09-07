@@ -11,13 +11,13 @@ import static constants.Constants.Path.JMART_AUTHSIGHNIN_PATH;
 import static constants.Constants.Servers.JMART_URL;
 import static io.restassured.RestAssured.given;
 
-public class AuthTest extends TestConfig  {
+public class AuthTest extends TestConfig {
 
     private ConnectionMySQLdb connectionMySQLdb;
 
 
     @Test
-    public void PostAuthSignIn () {
+    public void PostAuthSignIn() {
 
         String postJsonBody = "{\n" +
                 "    \"login\": \"dev_test_admin@email.com\",\n" +
@@ -26,56 +26,56 @@ public class AuthTest extends TestConfig  {
         given().
                 body(postJsonBody).
                 log().body().
-        when().
-                post(JMART_URL + JMART_AUTHSIGHNIN_PATH + JMART_AUTHSIGHNIN_POST ).
-        then().
+                when().
+                post(JMART_URL + JMART_AUTHSIGHNIN_PATH + JMART_AUTHSIGHNIN_POST).
+                then().
                 spec(responseSpecificationForPost).
                 log().body();
 
     }
 
     @Test
-    public void PostAuthSignInByOtp () {
+    public void PostAuthSignInByOtp() {
 
         String postJsonBody = "{\n" +
                 "    \"mobile_phone\": \"+7(777)055-13-64\"\n" +
                 "}";
-                given().
-                        body(postJsonBody).
-                        log().body().
+        given().
+                body(postJsonBody).
+                log().body().
                 when().
-                        post(JMART_URL + JMART_AUTHSIGHNIN_PATH + JMART_AUTHSIGHNIN_BY_OTP_POST ).
+                post(JMART_URL + JMART_AUTHSIGHNIN_PATH + JMART_AUTHSIGHNIN_BY_OTP_POST).
                 then().
-                        spec(responseSpecificationForPost).
-                        log().body();
+                spec(responseSpecificationForPost).
+                log().body();
 
     }
 
     public void SMSCode() throws SQLException, InterruptedException {
-        connectionMySQLdb = new ConnectionMySQLdb();
+//        connectionMySQLdb = new ConnectionMySQLdb();
 
-        ConnectionMySQLdb.SelectSQL();
-        ConnectionMySQLdb.getSmsCode();
+        ConnectionMySQLdb.GetPhoneSQL();
+//        ConnectionMySQLdb.getSmsCode();
         Thread.sleep(2000);
     }
 
     @Test
-    public void PostAuthSignInByOtpVerify () {
-
+    public void PostAuthSignInByOtpVerify() throws SQLException, InterruptedException {
+        SMSCode();
         String postJsonBody = "{\n" +
                 "    \"mobile_phone\": \"+7(777)055-13-64\",\n" +
-                "    \"otp\": \"smsCode: \"\n" +
+//                "    \"otp\": \"5656\"\n" +
+                "    \"otp\":" + "\"" + ConnectionMySQLdb.getSmsCode() + "\"\n" +
                 "}";
 
-
-                given().
-                        body(postJsonBody).
-                        log().body().
+        given().
+                body(postJsonBody).
+                log().body().
                 when().
-                        post(JMART_URL + JMART_AUTHSIGHNIN_PATH + JMART_AUTHSIGHNIN_BY_OTP_VERIFY_POST ).
+                post(JMART_URL + JMART_AUTHSIGHNIN_PATH + JMART_AUTHSIGHNIN_BY_OTP_VERIFY_POST).
                 then().
-                        spec(responseSpecificationForPost).
-                        log().body();
+                spec(responseSpecificationForPost).
+                log().body();
 
     }
 
