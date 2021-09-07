@@ -55,7 +55,7 @@ public class AuthTest extends TestConfig {
 //        connectionMySQLdb = new ConnectionMySQLdb();
 
         ConnectionMySQLdb.GetPhoneSQL();
-//        ConnectionMySQLdb.getSmsCode();
+//        ConnectionMySQLdb.getSmsCode(); // ниже в Json-e вызываем.
         Thread.sleep(2000);
     }
 
