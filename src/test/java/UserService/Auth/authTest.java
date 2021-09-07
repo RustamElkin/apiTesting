@@ -1,3 +1,5 @@
+package UserService.Auth;
+
 import config.TestConfig;
 import connectionMySQLdb.ConnectionMySQLdb;
 import io.restassured.http.Headers;
@@ -11,7 +13,7 @@ import static constants.Constants.Path.JMART_AUTHSIGHNIN_PATH;
 import static constants.Constants.Servers.JMART_URL;
 import static io.restassured.RestAssured.given;
 
-public class AuthTest extends TestConfig {
+public class authTest extends TestConfig {
 
     private ConnectionMySQLdb connectionMySQLdb;
 
@@ -76,7 +78,6 @@ public class AuthTest extends TestConfig {
         then().
                 spec(responseSpecificationForPost).
                 log().body();
-
     }
 
 
