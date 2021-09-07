@@ -9,16 +9,17 @@ import  static  constants.Constants.Servers.JMART_URL;
 public class Constants {
 
     public static class RunVariable {
-//        public static String server = Servers.JMART_URL;
-        public static String server = Servers.SWAPI_URL;
-        public static String path = ""; // Если ничего не передаем в качестве Path, оставляем пустой
-//        public static String path = JMART_PATH;
+        public static String server = Servers.JMART_URL;
+//        public static String server = Servers.SWAPI_URL;
+//        public static String path = ""; // Если ничего не передаем в качестве Path, оставляем пустой
+        public static String path = JMART_PATH;
 //        public static String path = SWAPI_PATH;
     }
 
     // в Servers добавим константы для наших доменов, чтобы можно было тестировать разные проекты
     public static class Servers {
-        public static String JMART_URL = "https://jtest3.jmart.kz/";
+//        public static String JMART_URL = "https://jtest3.jmart.kz/";
+        public static String JMART_URL = "https://test.jmart.kz/";
         public static String SWAPI_URL = "https://swapi.dev/";
         public static String GOOGLE_PLACES_URL;
         public static String JSON_PLACEHOLDER_URL= "https://jsonplaceholder.typicode.com/";
@@ -27,7 +28,8 @@ public class Constants {
     }
 
     public static class Path {
-        public static String JMART_PATH = "api/4.0/";
+//        public static String JMART_PATH = "api/4.0/";
+        public static String JMART_PATH = "/gw/user/v1/";
         public static String SWAPI_PATH = "api/";
         public static String GOOGLE_PLACES_PATH = "maps/api/place/";
     }
@@ -37,6 +39,9 @@ public class Constants {
 
         // JMART
         public static String JMART_GET_SRA_FASTED_PRODUCTS_GET = "sra_faseted_products?category_id=";
+        public static String JMART_AUTHSIGHNIN_POST = "auth/sign-in";
+        public static String JMART_AUTHSIGHNIN_BY_OTP_POST = "auth/sign-in-by-otp";
+        public static String JMART_AUTHSIGHNIN_BY_OTP_VERIFY_POST = "auth/sign-in-by-otp-verify";
 
         // SWAPI
         public static String SWAPI_GET_PEOPLE = "people/";
@@ -50,6 +55,7 @@ public class Constants {
         public static String JSON_PLACEHOLDER_PUT = "posts/1/";
         public static String JSON_PLACEHOLDER_DELETE = "posts/1/"; // Создаем отдельный эндпоинт, чтоб если изменится эндпоинт для PUT, не сломался тест DELETE
         public static String JSON_PLACEHOLDER_POST = "posts/";
+
 
     }
 }

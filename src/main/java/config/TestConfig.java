@@ -34,6 +34,7 @@ public class TestConfig {
             build();
 
     protected RequestSpecification requestSpecificationForDataExtractTests = new RequestSpecBuilder().
+            addHeader("Content-Type", "application/json").
             setBaseUri(JMART_URL).
             build();
 
@@ -57,7 +58,7 @@ public class TestConfig {
          // ДО
         RequestSpecification requestSpecJson = new RequestSpecBuilder().
                 addHeader("Content-Type", "application/json").
-                addCookie("testCookieJson").
+//                addCookie("testCookieJson").
                 build();
         RestAssured.requestSpecification = requestSpecJson;
 
